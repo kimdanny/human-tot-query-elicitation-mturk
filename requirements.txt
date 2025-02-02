@@ -1,0 +1,7 @@
+black==23.9.1
+requests==2.31.0
+tqdm==4.66.1
+pandas==2.1.1
+matplotlib==3.8.0
+boto3==1.28.79
+aws-configure==2.1.8

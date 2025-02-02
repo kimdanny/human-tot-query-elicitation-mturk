@@ -1,0 +1,109 @@
+<HTMLQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd">
+  <HTMLContent><![CDATA[
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+
+<style>
+    #input-section {
+        display: none; /* Initially hide the input section */
+    }
+</style>
+
+
+<div id="image-container">
+    <img id="hit-image" width="800" height="600">
+    <br>
+    <!-- <button type="button" onclick="previousImage()">Previous Image</button> -->
+    <button type="button" onclick="nextImage()">Next Image</button>
+    <button type="button" onclick="toggleWriteMode()">Write</button>
+</div>
+
+
+<div id="input-container">
+    <crowd-form>
+
+        <crowd-instructions link-text="View instructions" link-type="button">
+            <short-summary>
+                <p>Write a tip of the tongue query of this movie.</p>
+            </short-summary>
+            <detailed-instructions>
+                <p>Imagine that you are posting a very detailed question in online community like Reddit.
+                Use all your memory that will help find the title of this movie.
+                </p>
+            </detailed-instructions>
+            <positive-example>
+                <p><img src="https://image.tmdb.org/t/p/original/npopZmDyveHfRrBZ8JrtzSqwru2.jpg" width="300" height="300"/></p>
+                <p>
+                    <em>I saw this movie when I was 12 years old, and considering my age, this movie must've been released in around 1990s. Blah Blah</em>
+                </p>
+            </positive-example>
+            <negative-example>
+                <p><img src="https://image.tmdb.org/t/p/original/hFxS7JjiOR5YCMuyqk5tqRIOOF4.jpg" width="300" height="300"/></p>
+                <p>
+                    <strong>Don't be too short. Also, your aim is to find the title of this movie</strong>
+                    <em>Do you recall who this lady was in which movie?</em>
+                </p>
+            </negative-example>
+        </crowd-instructions>
+
+        <p><strong>Instructions: </strong>Write your tip of the tongue query</p>
+        <crowd-input id="guessed-title-input" name="initial-name" label="Type your guess here ..."></crowd-input>
+        <!-- The submit button is part of the crowd-form and is automatically included -->
+
+    </crowd-form>
+</div>
+
+
+<script>
+    // Array of image objects with URLs and IDs
+    // shuffle the list
+    // example from here "/data/user_data/toeunk/tot-data/data_infobox/film/Uptight film"
+    var imageObjects = [
+        { url: 'https://image.tmdb.org/t/p/original/zwajRryBlX0ymiiESf1vOAEdRdu.jpg', id: 'image1' },
+        { url: 'https://image.tmdb.org/t/p/original/3u8f16v26jKjpOHhIBN6BHUC7x0.jpg', id: 'image2' },
+        { url: 'https://image.tmdb.org/t/p/original/wUTYfufW6U2SaOfIsTjPfJzWRvc.jpg', id: 'image3' },
+        { url: 'https://image.tmdb.org/t/p/original/7QTZRHoYHJRmUlFnWsbErLGGVfV.jpg', id: 'image4' },
+        { url: 'https://image.tmdb.org/t/p/original/oE9S9NBQaAmlILwJG2Zi3YscvuQ.jpg', id: 'image5' },
+        // Add more image objects with URLs and IDs
+    ];
+
+    var currentIndex = 0;
+
+    function showImage(index) {
+        var imageElement = document.getElementById('hit-image');
+        var inputElement = document.getElementById('guessed-title-input');
+
+        imageElement.src = imageObjects[index].url;
+        inputElement.name = imageObjects[index].id; // Update the name attribute
+    }
+
+    function nextImage() {
+        if (currentIndex < imageObjects.length - 1) {
+            currentIndex++;
+            showImage(currentIndex);
+        }
+    }
+
+    function previousImage() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showImage(currentIndex);
+        }
+    }
+
+    function toggleWriteMode() {
+        document.getElementById('image-container').style.display = 'none'; // Hide image container
+        document.getElementById('input-section').style.display = 'block'; // Show input section
+    }
+
+    // Set the initial image and input name on page load
+    window.onload = function() {
+        showImage(currentIndex);
+    };
+</script>
+
+
+]]>
+  </HTMLContent>
+  <FrameHeight>750</FrameHeight>
+</HTMLQuestion>

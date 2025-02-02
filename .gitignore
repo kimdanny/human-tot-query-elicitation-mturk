@@ -1,0 +1,9 @@
+.DS_Store
+
+*.json
+*.csv
+*.tsv
+*.png
+
+# mturk front-end archive pages
+mturk/page_archive/

@@ -1,0 +1,7 @@
+{
+    "candidatesFilePath": "<YOUR CSV FILE PATH>",
+    "fallbacksFilePath": "<YOUR CSV FILE PATH>",
+    "drawingStrategy": "<YOUR STRATEGY NUMBER>",
+    "stage": "live",
+    "domain": "<DOMAIN NAME>"
+}
