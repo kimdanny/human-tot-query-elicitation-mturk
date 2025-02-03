@@ -1,5 +1,6 @@
 # Human TOT Query Elicitation Interface by MTurk
 This repository contains the source code used to create an MTurk interface designed for collecting human-elicited Tip of the Tongue (TOT) queries. This version of the interface is intended for internal pilot testing, while the actual data collection was conducted at NIST by trained contractors.
+The human-elicited TOT queries will be used as part of the test queries in TREC 2025 TOT track.
 
 Implementation details (frontend and backend) and design can be found in the [Interface Design](media/InterfaceDesign.pdf).
 
