@@ -8,9 +8,27 @@ Implementation details (frontend and backend) and design can be found in the [In
 This codebase is implemented in Python 3.11.5. The necessary libraries can be found in `requirements.txt`. 
 
 ## (Offline) Visual Stimuli Collection Process
-We collected images from TMDB (for the Movie domain) and Wikipedia (for the Landmark and Person domains). We then deselected some images based on the [Image Deselection Criteria](image_deselection_criteria.md).
+We gathered images from TMDB (for the Movie domain) and Wikipedia (for the Landmark and Person domains). Images were filtered based on the predefined [Image Deselection Criteria](image_deselection_criteria.md) to ensure their suitability for the TOT query elicitation process. The final dataset includes a total of 1,687 Movie entities, 1,946 Person entities, and 330 Landmark entities.
 
-The final set of images was sorted by their popularity (measured by Wikipedia page views) and binned into 20 groups. The most popular entities (those in the first bin) were saved in fallback files (`<DOMAIN_NAME>_fallbacks.csv`), while entities in the other 19 bins were saved in candidate files (`<DOMAIN_NAME>_candidates.csv`).
+### Visual Stimuli Dataset
+To structure the dataset, we ranked the collected entities by popularity using Wikipedia page view counts and categorized them into 20 bins. The most popular entities (top bin) were stored separately in fallback files (`<DOMAIN_NAME>_fallbacks.csv`), while entities in the remaining 19 bins were included in candidate files (`<DOMAIN_NAME>_candidates.csv`).
+
+The dataset is available at [Visual Stimuli Dataset](visual_stimuli/).
+
+#### File Structure
+
+Each CSV file contains the following fields:
+
+- `PageName`: The Wikipedia title of the entity  
+- `wikidataID`: The corresponding Wikidata identifier  
+- `ImageURL`: The source URL of the image from Wikimedia or TMDB  
+
+This dataset supports research on TOT retrieval by providing carefully curated visual stimuli to aid in the elicitation of human-written TOT queries.
+
+### License
+
+The dataset is freely available for research purposes under an open-access license. Please cite our paper if you use this dataset in your work.
+
 
 ## (Online) Creating HITs and Retrieving/Logging Responses
 
